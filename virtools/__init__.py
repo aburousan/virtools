@@ -1,5 +1,5 @@
 from .calibration import dn_to_radiance, radiance_to_dn, reflectance, radiance_from_reflectance
-from .constants import FILTER_BANDS_VIS, FILTER_BANDS_IR
+from .constants import FILTER_BANDS_VIS, FILTER_BANDS_IR, defective_ir_pixels, defective_vis_pixels
 from .correction import restore_sat_nan_no, get_filter_mask, correct_odd_even_weighted_interp, correct_cube_odd_even_interp, nan_running_avg, despike_from_doc, despike_cube_from_doc, destripe_wavelet_moment, destripe_cube
 from .dark_current import predict_dark_current_doc, fit_dark_thermal_model, predict_dark_cube_from_model, remove_closed_shutter_frames, remove_indices_from_list
 from .interpolation import fill_nan_with_spline, fill_cube_nan_sp, fix_defective_pixels_with_spline, fit_linear_dispersion, restore_sat_nan_no, correct_nan_pixels_doc
@@ -46,5 +46,5 @@ __all__ = [
     "remove_indices_from_list",
     "restore_sat_nan_no",
     "sharpen_science_cube_with_star_psf",
-    "show_band_image",
+    "show_band_image","defective_ir_pixels", "defective_ir_pixels"
 ]
