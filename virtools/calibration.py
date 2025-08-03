@@ -1,5 +1,6 @@
 """Radiometric and reflectance calibration routines."""
 import numpy as np
+from scipy.signal import savgol_filter
 
 def dn_to_radiance(dn_cube, itf, exposure_times):
     bands, samples, lines = dn_cube.shape
@@ -45,3 +46,11 @@ def radiance_from_reflectance(
     si = solar_irradiance[:, np.newaxis, np.newaxis]  # Shape: (bands, 1, 1)
     radiance = reflectance_cube * si * scale_factor
     return radiance
+
+def spectral_savgol_filter(cube, window_length=7, polyorder=2):
+    bands, samples, lines = cube.shape
+    out = np.empty_like(cube)
+    for i in range(samples):
+        for j in range(lines):
+            out[:, i, j] = savgol_filter(cube[:, i, j], window_length=window_length, polyorder=polyorder)
+    return out
