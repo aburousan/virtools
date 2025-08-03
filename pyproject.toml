@@ -18,7 +18,7 @@ dependencies = [
   "scipy",
   "matplotlib",
   "pvl",
-  "pywt",
+  "PyWavelets",
   "scikit-image"
 ]
 
